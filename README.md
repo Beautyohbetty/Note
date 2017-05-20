@@ -40,7 +40,7 @@ UI界面设计
 
 
 1 修改noteslist_item.xml，增加显示时间戳的TextView。
-···java
+
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
@@ -120,8 +120,10 @@ UI界面设计
 
     </LinearLayout>
 </LinearLayout>
-···
+
 2 在NotePadProvider中变量值添加
+
+
 
 
 private static final String[] READ_NOTE_PROJECTION = new String[] {
@@ -131,11 +133,15 @@ private static final String[] READ_NOTE_PROJECTION = new String[] {
             NotePad.Notes.COLUMN_NAME_CREATE_DATE, // Projection position 3, the note's createdate
     };
 
+
     private static final int READ_NOTE_NOTE_INDEX = 1;
     private static final int READ_NOTE_TITLE_INDEX = 2;
     private static final int READ_NOTE_CREATE_DATE_INDEX = 3;
 
+
 3
+
+
 
 /*
     读取数据库中的数据存到mDate中
@@ -151,6 +157,8 @@ private static final String[] READ_NOTE_PROJECTION = new String[] {
     }
 
  4
+ 
+ 
  在NotePad中修改成为最合适的字符串格式
  
  
