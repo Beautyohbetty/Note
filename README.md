@@ -38,7 +38,9 @@ UI界面设计
 
 四、添加几个不同笔记之后的界面，每一条notes下方显示时间戳。 
 
+
 1 修改noteslist_item.xml，增加显示时间戳的TextView。
+···java
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
@@ -118,7 +120,10 @@ UI界面设计
 
     </LinearLayout>
 </LinearLayout>
+···
 2 在NotePadProvider中变量值添加
+
+
 private static final String[] READ_NOTE_PROJECTION = new String[] {
             NotePad.Notes._ID,               // Projection position 0, the note's id
             NotePad.Notes.COLUMN_NAME_NOTE,  // Projection position 1, the note's content
@@ -131,6 +136,7 @@ private static final String[] READ_NOTE_PROJECTION = new String[] {
     private static final int READ_NOTE_CREATE_DATE_INDEX = 3;
 
 3
+
 /*
     读取数据库中的数据存到mDate中
      */
@@ -147,6 +153,8 @@ private static final String[] READ_NOTE_PROJECTION = new String[] {
  4
  在NotePad中修改成为最合适的字符串格式
  
+ 
+ 
   if (values.containsKey(NotePad.Notes.COLUMN_NAME_CREATE_DATE) == false) {
             values.put(NotePad.Notes.COLUMN_NAME_CREATE_DATE, now);
         }
@@ -158,9 +166,18 @@ private static final String[] READ_NOTE_PROJECTION = new String[] {
 
 显示时间戳最关键代码：
 
+
+
+
 ![*](https://github.com/Beautyohbetty/note/blob/master/app/build/image/17.png) 
 
+
+
+
 最终显示正确的时间戳
+
+
+
 
 ![界面3](https://github.com/Beautyohbetty/note/blob/master/app/build/image/444.jpg) 
 五、点击输入标题查询，得到相应结果
