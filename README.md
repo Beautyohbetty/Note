@@ -1,23 +1,25 @@
-# NotePad
+### NotePad
+
 This is an AndroidStudio rebuild of google SDK sample NotePad
 
 Android development experiment  
-功能如下：
 
-添加时间戳
+##功能如下：
 
-
-笔记查询
+#添加时间戳
 
 
-
-修改背景色
-
-
-UI界面设计
+#笔记查询
 
 
-一、进入Main界面，如图所示：  
+
+#修改背景色
+
+
+#UI界面设计
+
+
+一、进入`Main界面`，如图所示：  
 
 
 ![主界面](https://github.com/Beautyohbetty/note/blob/master/app/build/image/111.png)  
@@ -29,17 +31,18 @@ UI界面设计
 ![界面1](https://github.com/Beautyohbetty/note/blob/master/app/build/image/222.jpg)  
 
 
-三、进入一个newnote界面
+三、进入一个`newnote`界面
 
 
-![界面2](https://github.com/Beautyohbetty/note/blob/master/app/build/image/333.png)  
+![界面2](https://github.com/Beautyohbetty/note/blob/master/app/build/image/333.png"新界面")  
 
 
 
-四、添加几个不同笔记之后的界面，每一条notes下方显示时间戳。 
+四、添加几个不同笔记之后的界面，每一条notes下方显示`时间戳`。 
 
 
 1 修改noteslist_item.xml，增加显示时间戳的TextView。
+
 ```java
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
