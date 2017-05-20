@@ -4,19 +4,19 @@ This is an AndroidStudio rebuild of google SDK sample NotePad
 
 Android development experiment  
 
-##功能如下：
+## 功能如下：
 
-#添加时间戳
-
-
-#笔记查询
+# 添加时间戳
 
 
+# 笔记查询
 
-#修改背景色
 
 
-#UI界面设计
+# 修改背景色
+
+
+# UI界面设计
 
 
 一、进入`Main界面`，如图所示：  
@@ -34,7 +34,7 @@ Android development experiment
 三、进入一个`newnote`界面
 
 
-![界面2](https://github.com/Beautyohbetty/note/blob/master/app/build/image/333.png"新界面")  
+![界面2](https://github.com/Beautyohbetty/note/blob/master/app/build/image/333.png  "新界面")  
 
 
 
