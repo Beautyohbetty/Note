@@ -1,4 +1,4 @@
-### NotePad
+# NotePad
 
 This is an AndroidStudio rebuild of google SDK sample NotePad
 
@@ -6,17 +6,17 @@ Android development experiment
 
 ## 功能如下：
 
-# 添加时间戳
+### 添加时间戳
 
 
-# 笔记查询
+### 笔记查询
 
 
 
-# 修改背景色
+### 修改背景色
 
 
-# UI界面设计
+### UI界面设计
 
 
 一、进入`Main界面`，如图所示：  
@@ -127,7 +127,7 @@ Android development experiment
 2 在NotePadProvider中变量值添加
 
 
-
+```java
 
 private static final String[] READ_NOTE_PROJECTION = new String[] {
             NotePad.Notes._ID,               // Projection position 0, the note's id
@@ -141,10 +141,9 @@ private static final String[] READ_NOTE_PROJECTION = new String[] {
     private static final int READ_NOTE_TITLE_INDEX = 2;
     private static final int READ_NOTE_CREATE_DATE_INDEX = 3;
 
-
+    ```
 3
-
-
+```java
 
 /*
     读取数据库中的数据存到mDate中
@@ -158,12 +157,12 @@ private static final String[] READ_NOTE_PROJECTION = new String[] {
             Log.d("hhh",cursor.getString(COLUMN_INDEX_TITLE)+","+cursor.getString(COLUMN_INDEX_MODIFICATION_DATE)+","+cursor.getString(COLUMN_INDEX_ID));
         }
     }
+```
+
 
  4
- 
- 
  在NotePad中修改成为最合适的字符串格式
- 
+ ```java
  
  
   if (values.containsKey(NotePad.Notes.COLUMN_NAME_CREATE_DATE) == false) {
@@ -175,7 +174,10 @@ private static final String[] READ_NOTE_PROJECTION = new String[] {
         if (values.containsKey(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE) == false) {
             values.put(NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, now);
 
-显示时间戳最关键代码：
+
+```
+
+5  显示时间戳最关键代码：
 
 
 
@@ -191,10 +193,96 @@ private static final String[] READ_NOTE_PROJECTION = new String[] {
 
 
 ![界面3](https://github.com/Beautyohbetty/note/blob/master/app/build/image/444.jpg) 
-五、点击输入标题查询，得到相应结果
 
 
-![界面4](https://github.com/Beautyohbetty/note/blob/master/app/build/image/555.png)  
+
+五、点击`输入标题查询`，得到相应结果
+```java
+1 在noteList_layout中添加搜索查询功能
+
+
+ <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000000"
+            android:id="@+id/et_Search"
+            android:hint="输入标题查找"
+            android:textCursorDrawable="@drawable/contact_edit_edittext_normal"
+
+
+```
+2 在NotesList.java中，建立`搜索`实例
+
+```java
+public class NotesList extends ListActivity implements View.OnClickListener {
+
+
+    private EditText et_Search;//搜索框控件实例
+    private ImageView iv_searchnotes;//搜索按钮实例
+    private ListView lv_notesList;
+    private NotesListAdapter adapter;
+    private ImageView iv_addnotes;//添加按钮
+    private LinearLayout ll_noteList;
+    
+    
+   ```
+  3  search法
+   
+   ```java
+   public void Search(String searchTitle){
+        searchData=new ArrayList<Note>();
+        for(Note noteBean:mDate){
+            if(noteBean.getTitle().equals(searchTitle)){
+                searchData.add(noteBean);
+            }
+        }
+        mDate.clear();
+        mDate.addAll(searchData);
+        notifyDataSetChanged();
+    }
+```
+4设置当点击查询标题按钮时触发的方法
+```java
+ public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fab:
+                startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
+                break;
+            case R.id.iv_searchnotes:
+                showOrhide();
+                if(et_Search.getText().toString().equals("")){
+                    Cursor cursor1 = managedQuery(
+                            getIntent().getData(),            // Use the default content URI for the provider.
+                            PROJECTION,                       // Return the note ID and title for each note.
+                            null,                             // No where clause, return all records.
+                            null,                             // No where clause, therefore no where column values.
+                            NotePad.Notes.DEFAULT_SORT_ORDER  // Use the default sort order.
+                    );
+                    adapter.readDate(cursor1);
+                    adapter.notifyDataSetChanged();
+                }else{
+                    adapter.Search(et_Search.getText().toString());
+                }
+
+                break;
+        }
+    }
+```
+
+
+![界面4](https://github.com/Beautyohbetty/note/blob/master/app/build/image/555.png)  
+
+
+
+
 
 关键代码：
 
