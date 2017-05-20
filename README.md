@@ -23,7 +23,7 @@ UI界面设计
 ![主界面](https://github.com/Beautyohbetty/note/blob/master/app/build/image/111.png)  
 
 
-二、点击右下角添加按钮
+二、点击右下角`添加`按钮
 
 
 ![界面1](https://github.com/Beautyohbetty/note/blob/master/app/build/image/222.jpg)  
@@ -40,7 +40,7 @@ UI界面设计
 
 
 1 修改noteslist_item.xml，增加显示时间戳的TextView。
-
+```java
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
@@ -120,7 +120,7 @@ UI界面设计
 
     </LinearLayout>
 </LinearLayout>
-
+```
 2 在NotePadProvider中变量值添加
 
 
